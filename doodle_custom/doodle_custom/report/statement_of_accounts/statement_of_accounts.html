@@ -1,0 +1,147 @@
+<style>
+    * {
+       margin: 0 !important;
+       padding: 0 !important;
+   }
+   .print-format {
+       margin-left: 1mm !important;
+       margin-right: 1mm !important;
+   } 
+   .print-format .letter-head {
+       margin-top: 10px;
+       margin-bottom: 0px !important;
+   }
+   .print-format .letter-head-footer {
+       margin-top: 50px !important;
+   }
+   .height {
+       padding: 0px !important;
+   }
+</style>
+
+<div>
+    <table style="width: 100%;">
+        <tbody>
+            <tr>
+                <td width="50%">
+                    <br><img alt="Logo" src="/files/invoice-logo.png" style="width: 200px;height:auto; float: left;">
+                </td>
+                <td style="text-align: right; font-size: 9pt; color: #3C3D3A; width: 40%;">
+                    <br>
+                        302, Nasser Al Junaibi Building <br>
+                        TCA, Abu Dhabi, U.A.E <br>
+                        Phone: 02 6711 640 <br>
+                        VAT 100335143200003
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div style="font-family: Arial, sans-serif; background-image: url(/files/icon_background.jpg); background-repeat: no-repeat; background-position: center; background-size: 800px;">
+
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <td colspan="3" style="font-size: 14pt; font-weight: bold; text-align: center;">
+                   <br> {{ __("STATEMENT OF ACCOUNTS") }}
+                </td> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td >{% if (filters.from_date) { %} <b>To:</b>  {%= filters.party %}{% } %}</td>
+                <td style="text-align:right;">
+                    {% if (filters.from_date) { %}
+                   <b> From Date:  </b>{%= filters.from_date %}
+                   {% } %}<br>
+                   {% if (filters.to_date) { %}
+                   <b> To Date:  </b>{%= filters.to_date %}
+                   {% } %}
+                    <!-- <b>Date: </b>{%= frappe.datetime.str_to_user(frappe.datetime.nowdate()) %} -->
+                </td> 
+            </tr>
+            <tr> 
+                <td colspan="3">
+                    Dear Sir/Madam,<br>
+                    {%= filters.party_type == "Customer" ? "Below is the statement of accounts as of the given date. We request that you settle any overdue bills promptly.<br>" : "" %}
+                    {%= filters.party_type == "Supplier" ? "Below is the statement of accounts as of the given date.<br>" : "" %}
+                </td>
+                
+                
+            </tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <table style="width: 100%;">
+        <thead style="background-color: #444444 !important;">
+            <tr style="background-color: #444444 !important; color:white; text-align: center;">
+                <th style="background-color: #444444 !important;color:white;">#</th>
+                <th style="background-color: #444444 !important;color:white;width:90px">Date</th>
+                <th style="background-color: #444444 !important;color:white;">Invoice No.</th>
+                <th style="background-color: #444444 !important;color:white;">Status</th>
+                <th style="background-color: #444444 !important;color:white;text-align: right;">Grand Total</th>
+                <th style="background-color: #444444 !important;color:white;text-align: right;">Paid Amount</th>
+                <th style="background-color: #444444 !important;color:white; text-align: right;">Outstanding Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% var j = 1; %}
+            {% for(var i=0, l=data.length; i<l; i++) { %} 
+                <tr>
+                    {% if(i < l - 1) { %}
+                    <td>{%= j %}</td>
+                    <td>{%= frappe.datetime.str_to_user(data[i].posting_date) %}</td>
+                    <td>{%= data[i]["name"] %}</td>
+                    <td>{%= data[i]["status"] %}</td>
+                    <td style="text-align: right;">{%= format_currency(data[i]["grand_total"], data[i]["currency"]) %}</td>
+                    <td style="text-align: right;">{%= format_currency(data[i]["paid_amount"], data[i]["currency"]) %}</td>
+                    <td style="text-align: right;">{%= format_currency(data[i]["outstanding_amount"], data[i]["currency"]) %}</td>
+                {% } else { %}
+                    <td style="border-top: 0.5px solid #444444"></td>
+                    <td style="border-top: 0.5px solid #444444">{%= frappe.datetime.str_to_user(data[i].posting_date) %}</td>
+                    <td style="border-top: 0.5px solid #444444"><b>Total</b></td>
+                    <td style="border-top: 0.5px solid #444444">{%= data[i]["status"] %}</td>
+                    <td style="text-align: right;border-top: 0.5px solid #444444">{%= format_currency(data[i]["grand_total"], data[i]["currency"]) %}</td>
+                    <td style="text-align: right;border-top: 0.5px solid #444444">{%= format_currency(data[i]["paid_amount"], data[i]["currency"]) %}</td>
+                    <td style="text-align: right;border-top: 0.5px solid #444444">{%= format_currency(data[i]["outstanding_amount"], data[i]["currency"]) %}</td> <!-- Empty cell for last row -->
+                {% } %}
+                </tr>
+                {% j = j + 1; %}
+            {% } %}
+        </tbody>
+    </table>
+
+    {% var total_invoiced = 0; %}
+    {% var total_paid = 0; %}
+    {% var total_outstanding = 0; %}
+    {% for (var i = 0; i < data.length - 1; i++) { %}
+        {% total_invoiced += data[i]["grand_total"] || 0; %}
+        {% total_paid += data[i]["paid_amount"] || 0; %}
+        {% total_outstanding += data[i]["outstanding_amount"] || 0; %}
+    {% } %}
+
+    <table style="width: 80%;">
+        <tbody>
+            <tr>
+                <td height="50px">&nbsp;</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Grand Total:</td>
+                <td>{%= format_currency(total_invoiced, data[0]["currency"]) %}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Paid Amount Total:</td>
+                <td>{%= format_currency(total_paid, data[0]["currency"]) %}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Outstanding Total:</td>
+                <td>{%= format_currency(total_outstanding, data[0]["currency"]) %}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

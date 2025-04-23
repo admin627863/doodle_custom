@@ -1,0 +1,163 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-05-16 13:02:26.156276",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "expense_account",
+  "vendor",
+  "column_break_tuo9w",
+  "posting_date",
+  "amount_and_taxes_section",
+  "amount",
+  "total_tax",
+  "tax_treatment",
+  "reference",
+  "column_break_c7mor",
+  "place_of_supply",
+  "tax",
+  "division",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "expense_account",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Expense account",
+   "options": "Account",
+   "reqd": 1
+  },
+  {
+   "fieldname": "vendor",
+   "fieldtype": "Link",
+   "label": "Vendor",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "column_break_tuo9w",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount_and_taxes_section",
+   "fieldtype": "Section Break",
+   "label": "Amount and Taxes"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Petty cash entry",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_treatment",
+   "fieldtype": "Select",
+   "label": "Tax Treatment",
+   "options": "\nVAT Registered\nNon VAT Registered\nOut of Scope\nNon VAT",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reference",
+   "fieldtype": "Data",
+   "label": "Reference"
+  },
+  {
+   "fieldname": "column_break_c7mor",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "place_of_supply",
+   "fieldtype": "Link",
+   "label": "Place of supply",
+   "options": "Territory",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tax",
+   "fieldtype": "Link",
+   "label": "Tax",
+   "options": "Sales Taxes and Charges Template",
+   "reqd": 1
+  },
+  {
+   "fieldname": "division",
+   "fieldtype": "Link",
+   "label": "Division",
+   "options": "Cost Center",
+   "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PETTY-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_tax",
+   "fieldtype": "Currency",
+   "label": "Total (Tax)",
+   "options": "Currency",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-05-17 13:57:55.960145",
+ "modified_by": "Administrator",
+ "module": "Doodle Custom",
+ "name": "Petty cash entry",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

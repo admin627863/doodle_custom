@@ -1,0 +1,30 @@
+{
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2025-02-22 11:51:12.624043",
+ "disable_prepared_report": 0,
+ "disabled": 1,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Doodle tech",
+ "modified": "2025-04-16 16:45:44.817957",
+ "modified_by": "Administrator",
+ "module": "Doodle Custom",
+ "name": "Statement of Accounts",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Sales Invoice",
+ "report_name": "Statement of Accounts",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  }
+ ]
+}

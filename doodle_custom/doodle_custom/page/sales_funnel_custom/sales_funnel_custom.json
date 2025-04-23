@@ -1,0 +1,26 @@
+{
+ "content": null,
+ "creation": "2024-01-05 16:28:22.375765",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2024-01-05 16:28:22.375765",
+ "modified_by": "Administrator",
+ "module": "Doodle Custom",
+ "name": "sales-funnel-custom",
+ "owner": "Administrator",
+ "page_name": "sales-funnel-custom",
+ "roles": [
+  {
+   "role": "Sales Manager"
+  },
+  {
+   "role": "Sales User"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Sales Funnel Custom"
+}

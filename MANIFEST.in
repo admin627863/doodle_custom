@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include doodle_custom *.css
+recursive-include doodle_custom *.csv
+recursive-include doodle_custom *.html
+recursive-include doodle_custom *.ico
+recursive-include doodle_custom *.js
+recursive-include doodle_custom *.json
+recursive-include doodle_custom *.md
+recursive-include doodle_custom *.png
+recursive-include doodle_custom *.py
+recursive-include doodle_custom *.svg
+recursive-include doodle_custom *.txt
+recursive-exclude doodle_custom *.pyc

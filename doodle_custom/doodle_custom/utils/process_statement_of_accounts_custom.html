@@ -1,0 +1,447 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+   <title>Doodle Invoice</title>
+   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+</head>
+<body style="font-size: 10pt;font-family: Arial, sans-serif;">
+   <table style="
+ width: 100%;
+ max-width: 1700px;
+" cellpadding="0" cellspacing="0" border="0">
+      <thead>
+         <tr>
+            <td ng-if="showField('logo')" style="font-size: 10pt;vertical-align: middle;" valign="top">
+               <a href="{logoURL}" target="_blank">
+               <img border="0" alt="Logo" width="170" style="width: 170px;height:auto;border:0;" src="/files/invoice-logo.png">
+               </a>
+            </td>
+            <td valign="top" style="vertical-align: middle;line-height:11px;text-align: right;padding-top: 10px;">
+               <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;text-align: right;">
+                  <tbody>
+                     <tr>
+                        <td style="line-height: 18px;vertical-align: middle;text-decoration: none;font-size: 10pt;color: #3C3D3A;font-weight: 600;">Doodle Technologies LLC</td>
+                     </tr><tr>
+                        <td style="line-height: 18px;vertical-align: middle;text-decoration: none;font-size: 10pt;color: #3C3D3A;"> 302, Nasser Al Junaibi Building </td>
+                     </tr>
+                     <tr>
+                        <td style="line-height: 18px;text-decoration: none;vertical-align: middle;font-size: 10pt;color: #3C3D3A;"> TCA, Abu Dhabi, U.A.E </td>
+                     </tr>
+
+                     <tr>
+                        <td style="line-height: 18px;vertical-align: middle;text-decoration: none;font-size: 10pt;color: #3C3D3A;">Phone: 02 6711 640</td>
+                     </tr><tr>
+                        <td style="line-height: 18px;vertical-align: middle;text-decoration: none;font-size: 10pt;color: #3C3D3A;">VAT 100335143200003 </td>
+                     </tr>
+                     
+                  </tbody>
+               </table>
+            </td>
+         </tr>
+      </thead>
+      <tbody>
+         
+         <tr>
+            <td ng-if="showField('logo')" style="font-size: 10pt;font-family: Arial, sans-serif;vertical-align: top;padding-top: 15px;padding-bottom: 15px;width: 50%;" valign="top">
+               <table cellpadding="0" cellspacing="0" border="0" style="text-align: left;">
+                  <tbody>
+                     <tr>
+                        <td style="line-height: 18px;vertical-align: middle;text-decoration: none;font-size: 10pt;color: #3C3D3A;">Bill To
+                        </td>
+                     </tr>
+                     <tr>
+                        <td style="line-height: 18px;text-decoration: none;vertical-align: middle;font-size: 10pt;color: #3C3D3A;font-weight: 600;">{{ filters.party[0] }}</td>
+                     </tr>
+                     <!-- <tr>
+                        <td style="line-height: 18px;vertical-align: middle;text-decoration: none;font-size: 10pt;color: #3C3D3A;">ICAD 1, Musaffah</td>
+                     </tr>
+                     <tr>
+                        <td style="line-height: 18px;vertical-align: middle;text-decoration: none;font-size: 10pt;color: #3C3D3A;">Phone: 02 4454225
+
+</td>
+                     </tr>
+                     <tr>
+                        <td style="line-height: 18px;vertical-align: middle;text-decoration: none;font-size: 10pt;color: #3C3D3A;">Abu Dhabi, United Arab Emirates</td>
+                     </tr>
+                     <tr>
+                        <td style="line-height: 18px;vertical-align: middle;text-decoration: none;font-size: 10pt;color: #3C3D3A;">100047267800003
+
+</td>
+                     </tr> -->
+                  </tbody>
+               </table>
+            </td>
+            <td ng-if="showField('logo')" style="font-size: 10pt;font-family: Arial, sans-serif;vertical-align: middle;padding-bottom: 15px;text-align: right;padding-top: 50px;width: 50%;" valign="top">
+               <table cellpadding="0" cellspacing="0" border="0" style="width: 350px;float: right;">
+                  <tbody>
+                     <tr>
+                        
+                           <td colspan="2" style="line-height: 18px;vertical-align: middle;text-decoration: none;font-family: Arial, sans-serif;font-size: 10pt;color: #3C3D3A;text-align: right;padding-bottom: 5px;"><label style="
+                           line-height: 20px;
+                           vertical-align: middle;
+                           text-decoration: none;
+                           font-family: Arial, sans-serif;
+                           font-size: 15pt;
+                           color: #3C3D3A;
+                           font-weight: 600;
+                           padding-right: 10px;
+                           ">Statement of Accounts</label></td>
+                     </tr><tr>
+                        
+                           <td colspan="2" style="line-height: 18px;vertical-align: middle;text-decoration: none;font-family: Arial, sans-serif;font-size: 10pt;color: #3C3D3A;text-align: right;border-top: 1px solid #bcbcbc;padding-top: 5px;padding-bottom: 5px;"><label style="
+                           line-height: 20px;
+                           vertical-align: middle;
+                           text-decoration: none;
+                           font-family: Arial, sans-serif;
+                           font-size: 10pt;
+                           color: #7e7e7e;
+                           font-weight: 600;
+                           padding-right: 10px;
+                           ">{{ frappe.format(filters.from_date, 'Date')}} To {{ frappe.format(filters.to_date, 'Date')}}</label></td>
+                     </tr>
+                     
+                  </tbody>
+               </table>
+            </td>
+         </tr>
+         <tr>
+            <td style="vertical-align: bottom;height: 10px;" valign="top" colspan="2">
+               <table style="text-decoration: none;font-family: Arial, sans-serif;font-size: 9pt;color: #888888;width: 100%;" cellpadding="0" cellspacing="0">
+                  <thead style="
+                     background: #444444;
+                     ">
+                     <tr>
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #fff;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           ">
+                           <span style ="color:white;">Date</span>
+                        </td>
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #fff;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           ">
+                           <span style ="color:white;">Transactions</span>
+                        </td>
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #fff;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           ">
+                           <span style ="color:white;">Details</span>
+                        </td>
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #fff;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           ">
+                           <span style ="color:white;">Amount</span>
+                        </td>
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #fff;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           ">
+                           <span style ="color:white;">Payments</span>
+                        </td>
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #fff;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           text-align: right;
+                           padding-right: 20px;
+                           ">
+                           <span style ="color:white;">Balance</span>
+                        </td>
+                     </tr>
+                  </thead>
+                  <tbody>
+                    {% for row in data %}
+                     <tr>
+                        {% if(row.posting_date) %}
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #3C3D3A;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           border-bottom: 1px solid #BCBCBC;
+                           ">
+                           <span>{{frappe.utils.get_datetime(row.posting_date).strftime('%d %b, %Y')}}</span>
+                        </td>
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #3C3D3A;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           border-bottom: 1px solid #BCBCBC;
+                           ">
+                           
+                           <span style="
+                              ">{{ row.voucher_type }}
+					<br>{{ row.voucher_no }}
+                </span>
+                        
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #3C3D3A;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           border-bottom: 1px solid #BCBCBC;
+                           ">
+                           <span>
+                            {{ row.remarks or "-" }}
+                            {% if row.bill_no %}
+                            {{ row.bill_no }}
+                            {% endif %}
+                           </span>
+                        </td><td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #3C3D3A;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           border-bottom: 1px solid #BCBCBC;
+                           ">
+                           <span>{{ frappe.utils.fmt_money(row.debit, currency=filters.presentation_currency) }}</span>
+                        </td>
+                        
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #3C3D3A;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           border-bottom: 1px solid #BCBCBC;
+                           ">
+                           <span style="
+                              display: block;
+                              ">
+                            {{ frappe.utils.fmt_money(row.credit, currency=filters.presentation_currency) }}  
+                            </span>
+                           
+                        </td>
+                        {% else %}
+
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #3C3D3A;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           border-bottom: 1px solid #BCBCBC;
+                           ">
+                           <span style="
+                              display: block;
+                              ">
+                            </span>
+                           
+                        </td>
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #3C3D3A;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           border-bottom: 1px solid #BCBCBC;
+                           ">
+                           <span style="
+                              display: block;
+                              ">
+                            </span>
+                           
+                        </td>
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #3C3D3A;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           border-bottom: 1px solid #BCBCBC;
+                           ">
+                           <span style="
+                              display: block;
+                              ">
+                              <b>{{ frappe.format(row.account, {fieldtype: "Link"}) or "&nbsp;" }}</b>
+                            </span>
+                           
+                        </td>
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #3C3D3A;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           border-bottom: 1px solid #BCBCBC;
+                           ">
+                           <span style="
+                              display: block;
+                              ">
+                              {{ row.get('account', '') and frappe.utils.fmt_money(row.debit, currency=filters.presentation_currency) }}
+                            </span>
+                           
+                        </td>
+                        <td valign="middle" style="
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        color: #3C3D3A;
+                        font-size: 10pt;
+                        padding-left: 20px;
+                        line-height: 18px;
+                        padding-right: 20px;
+                        border-bottom: 1px solid #BCBCBC;
+                        ">
+                        <span style="
+                           display: block;
+                           ">
+                           {{ row.get('account', '') and frappe.utils.fmt_money(row.credit, currency=filters.presentation_currency) }}
+                         </span>
+                        
+                     </td>
+                        {% endif %}
+                        <td valign="middle" style="
+                        text-align: right;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        color: #3C3D3A;
+                        font-size: 10pt;
+                        padding-left: 20px;
+                        line-height: 18px;
+                        padding-right: 20px;
+                        border-bottom: 1px solid #BCBCBC;
+                        ">
+                        <span>{{ frappe.utils.fmt_money(row.balance, currency=filters.presentation_currency) }}</span>
+                     </td>
+                     </tr>
+                     {% endfor %}
+                  </tbody>
+               </table>
+            </td>
+         </tr>
+         
+         <tr>
+            <td style="vertical-align: bottom;height: 10px;" valign="top" colspan="2">
+               <table style="text-decoration: none;font-family: Arial, sans-serif;font-size: 9pt;color: #888888;width: 100%;padding-top: 20px;" cellpadding="0" cellspacing="0">
+                  <thead>
+                     
+                  </thead>
+                  <tbody>
+                     
+                     <tr>
+                        <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #3C3D3A;
+                           font-size: 11pt;
+                           padding-left: 20px;
+                           line-height: 20px;
+                           padding-right: 20px;
+                           font-weight: 600;
+                           ">
+                           
+                        </td><td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #3C3D3A;
+                           font-size: 11pt;
+                           padding-left: 20px;
+                           line-height: 20px;
+                           padding-right: 20px;
+                           font-weight: 600;
+                           ">
+                           
+                        </td><td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #3C3D3A;
+                           font-size: 11pt;
+                           padding-left: 20px;
+                           line-height: 20px;
+                           padding-right: 20px;
+                           font-weight: 600;
+                           ">
+                           
+                        </td>
+                        <!-- <td valign="middle" style="
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #3C3D3A;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           border-bottom: 1px solid #BCBCBC;
+                           text-align: right;
+                           font-weight: 600;
+                           ">
+                           <span>Balance Due</span>
+                        </td>
+                        <td valign="middle" style="
+                           text-align: right;
+                           padding-top: 10px;
+                           padding-bottom: 10px;
+                           color: #3C3D3A;
+                           font-size: 10pt;
+                           padding-left: 20px;
+                           line-height: 18px;
+                           padding-right: 20px;
+                           border-bottom: 1px solid #BCBCBC;
+                           font-weight: 600;
+                           ">
+                           <span>AED 4,467.10</span>
+                        </td> -->
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+         </tr>
+         
+         
+      </tbody>
+   </table>
+
+</body></html>

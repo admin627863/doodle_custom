@@ -1,0 +1,171 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-02-13 11:21:52.410668",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "employee",
+  "employee_name",
+  "department",
+  "attendance_device_id_biometricrf_tag_id",
+  "column_break_ohexn",
+  "status",
+  "approving_manager",
+  "attendance_and_time_logs_details_section",
+  "time_and_attendace",
+  "section_break_tgvdt",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Open\nSent for Approval\nApproved\nRejected\nCancelled",
+   "permlevel": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Timesheet Entry",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Series",
+   "options": "TS-Main-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ohexn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.attendance_device_id",
+   "fieldname": "attendance_device_id_biometricrf_tag_id",
+   "fieldtype": "Data",
+   "label": "Attendance Device ID (Biometric/RF tag ID)"
+  },
+  {
+   "fetch_from": "employee.leave_approver",
+   "fieldname": "approving_manager",
+   "fieldtype": "Link",
+   "label": "Approving manager",
+   "options": "User"
+  },
+  {
+   "fieldname": "attendance_and_time_logs_details_section",
+   "fieldtype": "Section Break",
+   "label": "Attendance and Time logs details"
+  },
+  {
+   "fieldname": "time_and_attendace",
+   "fieldtype": "Table",
+   "label": "Time and Attendace",
+   "options": "Timesheet Entry Table",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_tgvdt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Text Editor",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.first_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-02-14 15:41:46.596269",
+ "modified_by": "Administrator",
+ "module": "Doodle Custom",
+ "name": "Timesheet Entry",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects Manager",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
