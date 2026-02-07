@@ -114,7 +114,13 @@ override_doctype_class = {
 doc_events = {
 	"Opportunity":{
 		"after_insert":"doodle_custom.doodle_custom.doctype.opportunity.opportunity_custom.opportunity_comment"
-	}
+	},
+    "Sales Invoice": {
+        "validate": "doodle_custom.doodle_custom.doctype.sales_invoice.sales_invoice_custom.validate_sales_invoice"
+    },
+    "Delivery Note": {
+        "validate": "doodle_custom.doodle_custom.doctype.delivery_note.delivery_note.validate_delivery_note"
+    }
 }
 
 # Scheduled Tasks
@@ -122,7 +128,8 @@ doc_events = {
 
 scheduler_events = {
     "daily": [
-        "doodle_custom.tasks.daily"
+        "doodle_custom.tasks.daily",
+        "doodle_custom.doodle_custom.utils.cleanup.call_cleanup_endpoint"
     ],
     "cron": {
         "0 8 * * *": [

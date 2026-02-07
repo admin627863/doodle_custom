@@ -225,3 +225,4 @@ def process_get_a_free_quote_common(form_data):
         frappe.logger().info(f"New Lead Created: {new_lead.name} for 'Get a free quote - common'")
     except Exception as e:
         frappe.log_error(f"Failed to create lead for 'Get a free quote - common'. Error: {str(e)}", "Lead Creation Error")
+
